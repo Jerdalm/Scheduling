@@ -29,11 +29,11 @@ const unsigned long Job::getLongest() const
 	return mostSlack;
 }
 
-unsigned long Job::CalculateLeastSlack()
-{
-	for(int i = vTask.size(); i < 0; i--)
-	{
-		leastSlack =
-	}
-}
+//unsigned long Job::CalculateLeastSlack()
+//{
+//	for(int i = vTask.size(); i < 0; i--)
+//	{
+//		leastSlack =
+//	}
+//}
 
