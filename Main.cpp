@@ -5,10 +5,16 @@
  *      Author: Jerem
  */
 
+#include "JobShop.h"
+#include <iostream>
+
+int main(int argc, char **argv) {
 
 
-int int main(int argc, char **argv) {
+	JobShop AlgorithmShop;
+	AlgorithmShop.extractFile(argv[1]);
 
+	return 0;
 }
 
 
