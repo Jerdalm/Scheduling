@@ -13,7 +13,7 @@ machineNumber(aMachineNumber), timeDuration(aTimeDuration)
 
 }
 
-Task::Task(Task& aTask) :
+Task::Task(const Task& aTask) :
 machineNumber(aTask.machineNumber), timeDuration(aTask.timeDuration)
 {
 }
@@ -22,24 +22,24 @@ Task::~Task()
 {
 }
 
-unsigned short Task::getMachineNumber(){
+unsigned short Task::getMachineNumber() const {
 
 	return machineNumber;
 }
 
-unsigned short Task::getTimeDuration(){
+unsigned short Task::getTimeDuration() const {
 
 	return timeDuration;
 }
 
-void Task::setMachineNumber(unsigned short aMachineNumber){
+void Task::setMachineNumber(const unsigned short aMachineNumber){
 
 	machineNumber = aMachineNumber;
 
 }
-void Task::setTimeDuration(unsigned short aTimeDuration){
+void Task::setTimeDuration(const unsigned short aTimeDuration){
 
-	timeduration = aTimeDuration;
+	timeDuration = aTimeDuration;
 }
 
 

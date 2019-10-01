@@ -14,15 +14,24 @@
 class Job {
 public:
 	Job();
+	Job(const Job& aJob);
+
 	virtual ~Job();
-	unsigned long CalculateLongestSlack(unsigned short timeDuration);
-	const unsigned long getLongest() const;
-	unsigned long CalculateLeastSlack();
+
+	unsigned short getStartingTime() const;
+	void set(const unsigned long aStartingTime);
+
+	unsigned short getEndTime() const;
+	void set(const unsigned long anEndTime);
+
+	unsigned short getTotalDuration() const;
+	void set(const unsigned long aTotalDuration);
 
 private:
-	unsigned long mostSlack;
-	unsigned long leastSlack;
-	std::vector<Task> vTask;
+	unsigned long startingTime;
+	unsigned long endTime;
+	unsigned long totalDuration;
+	std::vector<Task> taskVector;
 };
 
 #endif /* JOB_H_ */

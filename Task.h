@@ -13,14 +13,15 @@
 class Task {
 public:
 	Task(unsigned short machineNumber, unsigned short timeDuration);
+	Task(const Task& aTask);
+
 	virtual ~Task();
-	Task(Task& aTask);
 
-unsigned short getMachineNumber();
-unsigned short getTimeDuration();
+	unsigned short getMachineNumber() const;
+	void setMachineNumber(const unsigned short aMachineNumber);
 
-void setMachineNumber(unsigned short aMachineNumber);
-void setTimeDuration(unsigned short aTimeDuration);
+	unsigned short getTimeDuration() const;
+	void setTimeDuration(const unsigned short aTimeDuration);
 
 private:
 unsigned short machineNumber;
