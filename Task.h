@@ -15,11 +15,16 @@ public:
 	Task(unsigned short machineNumber, unsigned short timeDuration);
 	virtual ~Task();
 	Task(Task& aTask);
-	InsertIntoVector;
 
+unsigned short getMachineNumber();
+unsigned short getTimeDuration();
+
+void setMachineNumber(unsigned short aMachineNumber);
+void setTimeDuration(unsigned short aTimeDuration);
 
 private:
-
+unsigned short machineNumber;
+unsigned short timeDuration;
 };
 
 #endif /* TASK_H_ */

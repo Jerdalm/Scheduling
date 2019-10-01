@@ -7,30 +7,42 @@
 
 #include "Task.h"
 
-Task::Task(unsigned short machineNumber, unsigned short timeDuration)
-{
-	// TODO Auto-generated constructor stub
-
-}
-
-Task::Task(Task& aTask)
+Task::Task(unsigned short aMachineNumber, unsigned short aTimeDuration) :
+machineNumber(aMachineNumber), timeDuration(aTimeDuration)
 {
 
 }
 
-//Task::InsertIntoVector
-//{
-//	for(int i = 0; i < vTask.size(); i++)
-//	{
-//		vTask[i][0] = machineNumber;
-//		vTask[i][1] = timeDuration;
-//	}
-//}
-
-
+Task::Task(Task& aTask) :
+machineNumber(aTask.machineNumber), timeDuration(aTask.timeDuration)
+{
+}
 
 Task::~Task()
 {
-	// TODO Auto-generated destructor stub
 }
+
+unsigned short Task::getMachineNumber(){
+
+	return machineNumber;
+}
+
+unsigned short Task::getTimeDuration(){
+
+	return timeDuration;
+}
+
+void Task::setMachineNumber(unsigned short aMachineNumber){
+
+	machineNumber = aMachineNumber;
+
+}
+void Task::setTimeDuration(unsigned short aTimeDuration){
+
+	timeduration = aTimeDuration;
+}
+
+
+
+
 
