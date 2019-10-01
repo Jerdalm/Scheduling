@@ -8,10 +8,18 @@
 #ifndef TASK_H_
 #define TASK_H_
 
+#include <vector>
+
 class Task {
 public:
-	Task();
+	Task(unsigned short machineNumber, unsigned short timeDuration);
 	virtual ~Task();
+	Task(Task& aTask);
+	InsertIntoVector;
+
+
+private:
+
 };
 
 #endif /* TASK_H_ */
