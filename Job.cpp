@@ -13,7 +13,12 @@ startingTime(0), endTime(0), totalDuration(0)
 }
 
 Job::Job(const Job& aJob) :
-startingTime(0), endTime(0), totalDuration(0)
+startingTime(aJob.startingTime), endTime(aJob.endTime), totalDuration(aJob.totalDuration), taskVector(aJob.taskVector)
+{
+}
+
+Job::Job(const std::vector<Task>& aTaskVector) :
+startingTime(0), endTime(0), totalDuration(0), taskVector(aTaskVector)
 {
 }
 
@@ -26,7 +31,7 @@ unsigned short Job::getStartingTime() const {
 	return startingTime;
 }
 
-void Job::set(const unsigned long aStartingTime){
+void Job::setStartingTime(const unsigned long aStartingTime){
 
 	startingTime = aStartingTime;
 }
@@ -36,7 +41,7 @@ unsigned short Job::getEndTime() const {
 	return endTime;
 }
 
-void Job::set(const unsigned long anEndTime){
+void Job::setEndTime(const unsigned long anEndTime){
 
 	endTime = anEndTime;
 }
@@ -46,7 +51,7 @@ unsigned short Job::getTotalDuration() const {
 	return totalDuration;
 }
 
-void Job::set(const unsigned long aTotalDuration){
+void Job::setTotalDuration(const unsigned long aTotalDuration){
 
 	totalDuration = aTotalDuration;
 }

@@ -15,17 +15,18 @@ class Job {
 public:
 	Job();
 	Job(const Job& aJob);
+	Job(const std::vector<Task>& v);
 
 	virtual ~Job();
 
 	unsigned short getStartingTime() const;
-	void set(const unsigned long aStartingTime);
+	void setStartingTime(const unsigned long aStartingTime);
 
 	unsigned short getEndTime() const;
-	void set(const unsigned long anEndTime);
+	void setEndTime(const unsigned long anEndTime);
 
 	unsigned short getTotalDuration() const;
-	void set(const unsigned long aTotalDuration);
+	void setTotalDuration(const unsigned long aTotalDuration);
 
 private:
 	unsigned long startingTime;
