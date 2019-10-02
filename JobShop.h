@@ -16,6 +16,7 @@
 #include <sstream>
 #include <iterator>
 #include <map>
+#include <set>
 
 class JobShop {
 public:
@@ -23,6 +24,7 @@ public:
 	virtual ~JobShop();
 
 	void extractFile(const std::string& argv);
+	void OrderJobs(unsigned long firstJob);
 
 
 private:
@@ -41,6 +43,10 @@ private:
 	unsigned short JobNumber;
 
 	unsigned short timeDuration;
+
+	std::vector<Task> taskVector;
+
+	std::map<int,int> PriorityMap;
 };
 
 #endif /* JOBSHOP_H_ */

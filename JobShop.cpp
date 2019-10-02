@@ -11,6 +11,7 @@
 #include "Job.h"
 
 
+
 JobShop::JobShop() {
 	// TODO Auto-generated constructor stub
 
@@ -38,8 +39,6 @@ void JobShop::extractFile(const std::string& inputParameters)
 	iss >> jobAmount >> machineAmount;
 	std::cout << line;
 
-	std::vector<Task> TaskVector;
-
 	while (getline(batchFile, line))
 	{
 		std::istringstream iss(line);
@@ -47,11 +46,21 @@ void JobShop::extractFile(const std::string& inputParameters)
 		while (iss >> machineNumber)
 		{
 			iss >> timeDuration;
-			TaskVector.push_back(Task(machineNumber, timeDuration));
+			taskVector.push_back(Task(machineNumber, timeDuration));
 		}
-		Job(TaskVector);
-		TaskVector.clear();
+		Job(taskVector);
+		taskVector.clear();
 	}
 	batchFile.close();
+}
+
+void JobShop::OrderJobs(unsigned long firstJob)
+{
+
+	for()
+
+	PriorityMap.insert ( std::pair<unsigned short,unsigned long>(1,firstJob) );
+
+	std::set<std::pair<int,int>, comp> set(PriorityMap.begin(), PriorityMap.end());
 }
 
