@@ -24,7 +24,9 @@ public:
 	virtual ~JobShop();
 
 	void extractFile(const std::string& argv);
-	void OrderJobs(unsigned long firstJob);
+	void OrderJobs();
+	std::map getOrderJobs();
+	void sentOrder();
 
 
 private:
@@ -41,12 +43,13 @@ private:
 	unsigned short machineAmount;
 	unsigned short machineNumber;
 	unsigned short JobNumber;
+	unsigned short machineNr;
 
 	unsigned short timeDuration;
 
 	std::vector<Task> taskVector;
 
-	std::map<int,int> PriorityMap;
+	std::map<unsigned short,unsigned short> priorityMap;
 };
 
 #endif /* JOBSHOP_H_ */

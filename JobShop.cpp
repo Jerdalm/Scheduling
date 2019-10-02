@@ -12,12 +12,14 @@
 
 
 
-JobShop::JobShop() {
+JobShop::JobShop()
+{
 	// TODO Auto-generated constructor stub
 
 }
 
-JobShop::~JobShop() {
+JobShop::~JobShop()
+{
 	// TODO Auto-generated destructor stub
 }
 
@@ -54,13 +56,51 @@ void JobShop::extractFile(const std::string& inputParameters)
 	batchFile.close();
 }
 
-void JobShop::OrderJobs(unsigned long firstJob)
+void JobShop::OrderJobs()
 {
 
-	for()
+//	for(int i = 0; i < jobVector.size(); i++)
+//	{
 
-	PriorityMap.insert ( std::pair<unsigned short,unsigned long>(1,firstJob) );
+		priorityMap.insert ( std::pair<unsigned short,unsigned short>(1,1) ); //(jobVector[i],jobVector[i].getTotalDuration())
 
-	std::set<std::pair<int,int>, comp> set(PriorityMap.begin(), PriorityMap.end());
+//	}
+
+
+	struct setLongest
+	{
+		template<typename N>
+		bool operator()(const N& l, const N& r) const
+		{
+			if (l.second != r.second)
+				return l.second < r.second;
+
+			return l.first < r.first;
+		}
+	};
+
+
+	std::set<std::pair<unsigned short,unsigned short>, setLongest> set(priorityMap.begin(), priorityMap.end());
+
 }
 
+std::map JobShop::getOrderJobs()
+{
+	return priorityMap;
+}
+
+void JobShop::sentOrder()
+{
+	for(int i = 0; i < priorityMap.size(); i++)
+	{
+		machineNr = priorityMap[i].getMachine();
+
+			for(int i = 0; i < priorityMap.size(); i++)
+			{
+				if(priorityMap[i].getMachine() == machineNr)
+				{
+					//sent order
+				}
+			}
+	}
+}
