@@ -66,7 +66,7 @@ void JobShop::generateOutput(){
   }
 }
 
-void JobShop::OrderJobs()
+void JobShop::criticalPathCalculation()
 {
 
 //	for(int i = 0; i < jobVector.size(); i++)
@@ -94,12 +94,12 @@ void JobShop::OrderJobs()
 
 }
 
-std::map JobShop::getOrderJobs()
+std::map JobShop::getCriticalPathCalculation()
 {
 	return priorityMap;
 }
 
-void JobShop::AssignMachine()
+void JobShop::jobAssigner()
 {
 	for(int i = 0; i < priorityMap.size(); i++)
 	{
@@ -111,7 +111,7 @@ void JobShop::AssignMachine()
 	}
 }
 
-void JobShop::SkipTime()
+void JobShop::jobDeassigner()
 {
 
 }

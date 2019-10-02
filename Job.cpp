@@ -75,3 +75,28 @@ void Job::setTaskVector(const std::vector<Task> aVector){
 
 }
 
+unsigned long Job::CalculateMostSlack(unsigned short timeDuration)
+{
+	for(int i = 0; i < taskVector.size(); i++)
+	{
+		mostSlack += taskVector[1][i];
+	}
+}
+
+const unsigned long Job::getMostSlack() const
+{
+	return mostSlack;
+}
+
+unsigned long Job::CalculateLeastSlack()
+{
+	for(int i = taskVector.size(); i < 0; i--)
+	{
+		//leastSlack =
+	}
+}
+
+const unsigned long Job::getLeastSlack() const
+{
+	return mostSlack;
+}

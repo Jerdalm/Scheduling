@@ -30,10 +30,10 @@ public:
   void setJobVector(const std::vector<Job>& aVector);
 
   void extractFile(const std::string& argv);
-  void OrderJobs(unsigned long firstJob);
-    std::map getOrderJobs();
-    void AssignMachine();
-    void SkipTime();
+  void criticalPathCalculation();
+    std::map getCriticalPathCalculation();
+    void jobAssigner();
+    void jobDeassigner();
   void generateOutput();
 
 private:

@@ -34,6 +34,11 @@ public:
 	std::vector<Task> getTaskVector() const;
 	void setTaskVector(const std::vector<Task> aVector);
 
+	unsigned long CalculateMostSlack(unsigned short timeDuration);
+	const unsigned long getMostSlack() const;
+	unsigned long CalculateLeastSlack();
+	const unsigned long getLeastSlack() const;
+
 
 private:
 	unsigned short jobID;
@@ -43,6 +48,9 @@ private:
 	unsigned long endTime;
 	unsigned long totalDuration;
 	std::vector<Task> taskVector;
+
+	unsigned long mostSlack;
+	unsigned long leastSlack;
 };
 
 #endif /* JOB_H_ */
