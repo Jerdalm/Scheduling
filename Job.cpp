@@ -8,17 +8,17 @@
 #include "Job.h"
 
 Job::Job() :
-startingTime(0), endTime(0), totalDuration(0)
+jobID(0), assigned(false), lastAssignedMachine(0), startingTime(0), endTime(0), totalDuration(0)
 {
 }
 
 Job::Job(const Job& aJob) :
-startingTime(aJob.startingTime), endTime(aJob.endTime), totalDuration(aJob.totalDuration), taskVector(aJob.taskVector)
+jobID(aJob.jobID), assigned(aJob.assigned), lastAssignedMachine(aJob.lastAssignedMachine), startingTime(aJob.startingTime), endTime(aJob.endTime), totalDuration(aJob.totalDuration), taskVector(aJob.taskVector)
 {
 }
 
-Job::Job(const std::vector<Task>& aTaskVector) :
-startingTime(0), endTime(0), totalDuration(0), taskVector(aTaskVector)
+Job::Job(unsigned short anID, const std::vector<Task>& aTaskVector) :
+jobID(anID), assigned(false), lastAssignedMachine(0), startingTime(0), endTime(0), totalDuration(0), taskVector(aTaskVector)
 {
 }
 
@@ -26,7 +26,16 @@ Job::~Job()
 {
 }
 
-unsigned short Job::getStartingTime() const {
+unsigned short Job::getJobID() const{
+
+	return jobID;
+}
+void Job::setJobID(const unsigned short anJobID){
+
+	jobID = anJobID;
+}
+
+unsigned long Job::getStartingTime() const {
 
 	return startingTime;
 }
@@ -36,7 +45,7 @@ void Job::setStartingTime(const unsigned long aStartingTime){
 	startingTime = aStartingTime;
 }
 
-unsigned short Job::getEndTime() const {
+unsigned long Job::getEndTime() const {
 
 	return endTime;
 }
@@ -46,7 +55,7 @@ void Job::setEndTime(const unsigned long anEndTime){
 	endTime = anEndTime;
 }
 
-unsigned short Job::getTotalDuration() const {
+unsigned long Job::getTotalDuration() const {
 
 	return totalDuration;
 }

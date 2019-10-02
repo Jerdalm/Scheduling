@@ -15,20 +15,27 @@ class Job {
 public:
 	Job();
 	Job(const Job& aJob);
-	Job(const std::vector<Task>& v);
+	Job(unsigned short anID, const std::vector<Task>& aTaskVector);
 
 	virtual ~Job();
 
-	unsigned short getStartingTime() const;
+	unsigned short getJobID() const;
+	void setJobID(const unsigned short anJobID);
+
+	unsigned long getStartingTime() const;
 	void setStartingTime(const unsigned long aStartingTime);
 
-	unsigned short getEndTime() const;
+	unsigned long getEndTime() const;
 	void setEndTime(const unsigned long anEndTime);
 
-	unsigned short getTotalDuration() const;
+	unsigned long getTotalDuration() const;
 	void setTotalDuration(const unsigned long aTotalDuration);
 
+
 private:
+	unsigned short jobID;
+	bool assigned;
+	unsigned short lastAssignedMachine;
 	unsigned long startingTime;
 	unsigned long endTime;
 	unsigned long totalDuration;
