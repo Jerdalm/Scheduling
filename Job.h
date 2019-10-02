@@ -28,8 +28,8 @@ public:
 	unsigned long getEndTime() const;
 	void setEndTime(const unsigned long anEndTime);
 
-	unsigned long getTotalDuration() const;
-	void setTotalDuration(const unsigned long aTotalDuration);
+	unsigned long getSlack() const;
+	void setSlack(const unsigned long aSlack);
 
 	std::vector<Task> getTaskVector() const;
 	void setTaskVector(const std::vector<Task> aVector);
@@ -41,7 +41,7 @@ private:
 	unsigned short lastAssignedMachine;
 	unsigned long startingTime;
 	unsigned long endTime;
-	unsigned long totalDuration;
+	unsigned long slack;
 	std::vector<Task> taskVector;
 };
 

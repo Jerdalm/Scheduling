@@ -8,17 +8,18 @@
 #include "Job.h"
 
 Job::Job() :
-jobID(0), assigned(false), lastAssignedMachine(0), startingTime(0), endTime(0), totalDuration(0)
+jobID(0), assigned(false), lastAssignedMachine(0), startingTime(0), endTime(0), slack(0)
 {
 }
 
 Job::Job(const Job& aJob) :
-jobID(aJob.jobID), assigned(aJob.assigned), lastAssignedMachine(aJob.lastAssignedMachine), startingTime(aJob.startingTime), endTime(aJob.endTime), totalDuration(aJob.totalDuration), taskVector(aJob.taskVector)
+jobID(aJob.jobID), assigned(aJob.assigned), lastAssignedMachine(aJob.lastAssignedMachine),
+startingTime(aJob.startingTime), endTime(aJob.endTime), slack(aJob.slack), taskVector(aJob.taskVector)
 {
 }
 
 Job::Job(unsigned short anID, const std::vector<Task>& aTaskVector) :
-jobID(anID), assigned(false), lastAssignedMachine(0), startingTime(0), endTime(0), totalDuration(0), taskVector(aTaskVector)
+jobID(anID), assigned(false), lastAssignedMachine(0), startingTime(0), endTime(0), slack(0), taskVector(aTaskVector)
 {
 }
 
@@ -55,14 +56,14 @@ void Job::setEndTime(const unsigned long anEndTime){
 	endTime = anEndTime;
 }
 
-unsigned long Job::getTotalDuration() const {
+unsigned long Job::getSlack() const {
 
-	return totalDuration;
+	return slack;
 }
 
-void Job::setTotalDuration(const unsigned long aTotalDuration){
+void Job::setSlack(const unsigned long aSlack){
 
-	totalDuration = aTotalDuration;
+	slack = aSlack;
 }
 
 std::vector<Task> Job::getTaskVector() const{
