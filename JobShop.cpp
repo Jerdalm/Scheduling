@@ -62,7 +62,7 @@ void JobShop::OrderJobs()
 //	for(int i = 0; i < jobVector.size(); i++)
 //	{
 
-		priorityMap.insert ( std::pair<unsigned short,unsigned short>(1,1) ); //(i,jobVector[i])
+		priorityMap.insert ( std::pair<unsigned short,unsigned short>(1,1) ); //(jobVector[i],jobVector[i].getTotalDuration())
 
 //	}
 
@@ -89,4 +89,22 @@ std::map JobShop::getOrderJobs()
 	return priorityMap;
 }
 
-
+void JobShop::sentOrder()
+{
+	for(int i = 0; i < priorityMap.size(); i++)
+	{
+		machineNr = priorityMap[i].getMachine();
+		if(!machineMap[i].machineFree)
+		{
+			for(int i = 0; i < priorityMap.size(); i++)
+			{
+				if(priorityMap[i].getMachine() == machineNr)
+				{
+					//sent order
+				}
+			}
+		}else{
+			//sent order
+		}
+	}
+}

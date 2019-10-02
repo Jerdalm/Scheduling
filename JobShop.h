@@ -26,6 +26,7 @@ public:
 	void extractFile(const std::string& argv);
 	void OrderJobs();
 	std::map getOrderJobs();
+	void sentOrder();
 
 
 private:
@@ -42,6 +43,7 @@ private:
 	unsigned short machineAmount;
 	unsigned short machineNumber;
 	unsigned short JobNumber;
+	unsigned short machineNr;
 
 	unsigned short timeDuration;
 
