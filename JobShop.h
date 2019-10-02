@@ -30,15 +30,16 @@ public:
   void setJobVector(const std::vector<Job>& aVector);
 
   void extractFile(const std::string& argv);
-  void OrderJobs(unsigned long firstJob);
-  //std::map getOrderJobs();
-  void sentOrder();
+  void criticalPathCalculation();
+    std::map getCriticalPathCalculation();
+    void jobAssigner();
+    void jobDeassigner();
   void generateOutput();
 
 private:
 
   std::ifstream batchFile;
-  std::map<int,int> PriorityMap;
+  std::map<int,int> priorityMap;
 
   std::string line;
   std::string inputParameters;
@@ -46,12 +47,16 @@ private:
   std::vector<Task> taskVector;
   std::vector<Job> jobVector;
 
+  std::vector<bool> machineVector;
+
   unsigned short currjobID = 0;
   unsigned short jobAmount;
   unsigned short machineAmount;
   unsigned short machineNumber;
   unsigned short JobNumber;
   unsigned short timeDuration;
+
+  unsigned short machineNr; //Is deze wel nodig? machineNumber bestaat ook.
 
 
 };

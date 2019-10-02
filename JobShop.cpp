@@ -66,51 +66,53 @@ void JobShop::generateOutput(){
   }
 }
 
-//void JobShop::OrderJobs()
-//{
-//
-////	for(int i = 0; i < jobVector.size(); i++)
-////	{
-//
-//		priorityMap.insert ( std::pair<unsigned short,unsigned short>(1,1) ); //(jobVector[i],jobVector[i].getTotalDuration())
-//
-////	}
-//
-//
-//	struct setLongest
+void JobShop::criticalPathCalculation()
+{
+
+//	for(int i = 0; i < jobVector.size(); i++)
 //	{
-//		template<typename N>
-//		bool operator()(const N& l, const N& r) const
-//		{
-//			if (l.second != r.second)
-//				return l.second < r.second;
-//
-//			return l.first < r.first;
-//		}
-//	};
-//
-//
-//	std::set<std::pair<unsigned short,unsigned short>, setLongest> set(priorityMap.begin(), priorityMap.end());
-//
-//}
-//
-//std::map JobShop::getOrderJobs()
-//{
-//	return priorityMap;
-//}
-//
-//void JobShop::sentOrder()
-//{
-//	for(int i = 0; i < priorityMap.size(); i++)
-//	{
-//		machineNr = priorityMap[i].getMachine();
-//
-//			for(int i = 0; i < priorityMap.size(); i++)
-//			{
-//				if(priorityMap[i].getMachine() == machineNr)
-//				{
-//					//sent order
-//				}
-//			}
+
+		priorityMap.insert ( std::pair<unsigned short,unsigned short>(1,1) ); //(jobVector[i],jobVector[i].getTotalDuration())
+
 //	}
-//}
+
+
+	struct setLongest
+	{
+		template<typename N>
+		bool operator()(const N& l, const N& r) const
+		{
+			if (l.second != r.second)
+				return l.second < r.second;
+
+			return l.first < r.first;
+		}
+	};
+
+
+	std::set<std::pair<unsigned short,unsigned short>, setLongest> set(priorityMap.begin(), priorityMap.end());
+
+}
+
+std::map JobShop::getCriticalPathCalculation()
+{
+	return priorityMap;
+}
+
+void JobShop::jobAssigner()
+{
+	for(int i = 0; i < priorityMap.size(); i++)
+	{
+		machineNr = priorityMap[i].getMachineNumber();
+		if(machineVector[machineNr])
+		{
+			machineVector[machineNr] = false;
+		}
+	}
+}
+
+void JobShop::jobDeassigner()
+{
+
+}
+
