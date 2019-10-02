@@ -65,3 +65,13 @@ void Job::setTotalDuration(const unsigned long aTotalDuration){
 	totalDuration = aTotalDuration;
 }
 
+std::vector<Task> Job::getTaskVector() const{
+
+	return taskVector;
+}
+void Job::setTaskVector(const std::vector<Task> aVector){
+
+	taskVector = aVector;
+
+}
+

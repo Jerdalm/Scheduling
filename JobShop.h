@@ -46,7 +46,7 @@ private:
   std::vector<Task> taskVector;
   std::vector<Job> jobVector;
 
-  unsigned short currjobID;
+  unsigned short currjobID = 0;
   unsigned short jobAmount;
   unsigned short machineAmount;
   unsigned short machineNumber;

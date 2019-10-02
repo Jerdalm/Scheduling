@@ -31,6 +31,9 @@ public:
 	unsigned long getTotalDuration() const;
 	void setTotalDuration(const unsigned long aTotalDuration);
 
+	std::vector<Task> getTaskVector() const;
+	void setTaskVector(const std::vector<Task> aVector);
+
 
 private:
 	unsigned short jobID;

@@ -29,7 +29,7 @@ void JobShop::setJobVector(const std::vector<Job>& aVector){
 
 void JobShop::extractFile(const std::string& inputParameters)
 {
-  std::cout <<  inputParameters <<'\n';
+  //std::cout <<  inputParameters <<'\n';
   batchFile.open("Batches/" + inputParameters);
 
   if (!batchFile.is_open())
@@ -41,7 +41,7 @@ void JobShop::extractFile(const std::string& inputParameters)
   std::istringstream iss(line);
 
   iss >> jobAmount >> machineAmount;
-  std::cout << line;
+  //std::cout << line<<std::endl;
 
   while (getline(batchFile, line))
   {
@@ -59,12 +59,10 @@ void JobShop::extractFile(const std::string& inputParameters)
   batchFile.close();
 }
 
-void generateOutput(){
-  std::vector<Job> jobVector;
+void JobShop::generateOutput(){
   for (std::vector<Job>::iterator it = jobVector.begin(); it != jobVector.end(); ++it)
   {
-    //hier zit nog een fout bij JobID
-    //(*it).getJobID()<<" "<<(*it).getStartingTime()<<" "<<(*it).getEndTime()<< std::endl;
+    std::cout<<(*it).getJobID()<<" "<<(*it).getStartingTime()<<" "<<(*it).getEndTime()<< std::endl;
   }
 }
 
