@@ -8,6 +8,9 @@
 #ifndef JOBSHOP_H_
 #define JOBSHOP_H_
 
+#include "Task.h"
+#include "Job.h"
+
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -20,36 +23,37 @@
 
 class JobShop {
 public:
-	JobShop();
-	virtual ~JobShop();
+  JobShop();
+  virtual ~JobShop();
 
-	void extractFile(const std::string& argv);
-	void OrderJobs();
-	std::map getOrderJobs();
-	void sentOrder();
+  std::vector<Job> getJobVector();
+  void setJobVector(const std::vector<Job>& aVector);
 
+  void extractFile(const std::string& argv);
+  void OrderJobs(unsigned long firstJob);
+  //std::map getOrderJobs();
+  void sentOrder();
+  void generateOutput();
 
 private:
-	/**
-	 * BatchFile die de input levert voor het algorithme
-	 */
-	std::ifstream batchFile;
-	/**
-	 * A row of characters to input into the vector
-	 */
-	std::string line;
-	std::string inputParameters;
-	unsigned short jobAmount;
-	unsigned short machineAmount;
-	unsigned short machineNumber;
-	unsigned short JobNumber;
-	unsigned short machineNr;
 
-	unsigned short timeDuration;
+  std::ifstream batchFile;
+  std::map<int,int> PriorityMap;
 
-	std::vector<Task> taskVector;
+  std::string line;
+  std::string inputParameters;
 
-	std::map<unsigned short,unsigned short> priorityMap;
+  std::vector<Task> taskVector;
+  std::vector<Job> jobVector;
+
+  unsigned short currjobID;
+  unsigned short jobAmount;
+  unsigned short machineAmount;
+  unsigned short machineNumber;
+  unsigned short JobNumber;
+  unsigned short timeDuration;
+
+
 };
 
 #endif /* JOBSHOP_H_ */
