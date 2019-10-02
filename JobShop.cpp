@@ -94,8 +94,7 @@ void JobShop::sentOrder()
 	for(int i = 0; i < priorityMap.size(); i++)
 	{
 		machineNr = priorityMap[i].getMachine();
-		if(!machineMap[i].machineFree)
-		{
+
 			for(int i = 0; i < priorityMap.size(); i++)
 			{
 				if(priorityMap[i].getMachine() == machineNr)
@@ -103,8 +102,5 @@ void JobShop::sentOrder()
 					//sent order
 				}
 			}
-		}else{
-			//sent order
-		}
 	}
 }
