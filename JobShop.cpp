@@ -66,46 +66,40 @@ void JobShop::generateOutput(){
   }
 }
 
-void JobShop::criticalPathCalculation()
+void JobShop::criticalPathCalculation(std::vector<Job>& aJobVector)
 {
 
 	for(int i = 0; i < jobVector.size(); i++)
 	{
 		if(!jobVector[i].getAssigned())
-		{
-		priorityMap.insert ( std::pair<unsigned short,unsigned short>(jobVector[i],jobVector[i].getSlack()) );
+		{		{
+		priorityList.push_back(jobVector[i]);
 		}
 	}
 
-
-	struct setLongest
-	{
-		template<typename N>
-		bool operator()(const N& l, const N& r) const
-		{
-			if (l.second != r.second)
-				return l.second < r.second;
-
-			return l.first < r.first;
-		}
-	};
-
-
-	std::set<std::pair<unsigned short,unsigned short>, setLongest> set(priorityMap.begin(), priorityMap.end());
+	    // sort using a custom function object
+	    struct {
+	        bool operator()(Job A, Job B) const
+	        {
+	            return A.getSlack < B.getSlack;
+	        }
+	    } customLess;
+	    std::sort(priorityList.begin(), priorityList.end(), customLess);
+	}
 
 }
 
-std::map JobShop::getCriticalPathCalculation()
-{
-	return priorityMap;
-}
+//std::map JobShop::getCriticalPathCalculation()
+//{
+//	return priorityMap;
+//}
 
 void JobShop::jobAssigner()
 {
 	for(int i = 0; i < priorityMap.size(); i++)
 	{
 
-		machineNr = priorityMap.getMachineNumber();
+		machineNr = priorityMap.begin();
 		if(machineVector[machineNr])
 		{
 			machineVector[machineNr] = false;

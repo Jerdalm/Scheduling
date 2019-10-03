@@ -18,7 +18,7 @@
 #include <algorithm>
 #include <sstream>
 #include <iterator>
-#include <map>
+#include <list>
 #include <set>
 
 class JobShop {
@@ -30,16 +30,16 @@ public:
   void setJobVector(const std::vector<Job>& aVector);
 
   void extractFile(const std::string& argv);
-  void criticalPathCalculation();
-    std::map getCriticalPathCalculation();
-    void jobAssigner();
-    void jobDeassigner();
+  void criticalPathCalculation(std::vector<Job>& aJobVector);
+    //std::map getCriticalPathCalculation();
+  void jobAssigner();
+  void jobDeassigner();
   void generateOutput();
 
 private:
 
   std::ifstream batchFile;
-  std::map<int,int> priorityMap;
+  std::list<Job> priorityList;
 
   std::string line;
   std::string inputParameters;
