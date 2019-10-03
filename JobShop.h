@@ -56,7 +56,7 @@ private:
   unsigned short JobNumber;
   unsigned short timeDuration;
 
-  unsigned short machineNr; //Is deze wel nodig? machineNumber bestaat ook.
+  unsigned short machineNr;
 
 
 };

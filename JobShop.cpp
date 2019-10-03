@@ -69,12 +69,13 @@ void JobShop::generateOutput(){
 void JobShop::criticalPathCalculation()
 {
 
-//	for(int i = 0; i < jobVector.size(); i++)
-//	{
-
-		priorityMap.insert ( std::pair<unsigned short,unsigned short>(1,1) ); //(jobVector[i],jobVector[i].getTotalDuration())
-
-//	}
+	for(int i = 0; i < jobVector.size(); i++)
+	{
+		if(!jobVector[i].getAssigned())
+		{
+		priorityMap.insert ( std::pair<unsigned short,unsigned short>(jobVector[i],jobVector[i].getSlack()) );
+		}
+	}
 
 
 	struct setLongest
@@ -103,7 +104,8 @@ void JobShop::jobAssigner()
 {
 	for(int i = 0; i < priorityMap.size(); i++)
 	{
-		machineNr = priorityMap[i].getMachineNumber();
+
+		machineNr = priorityMap.getMachineNumber();
 		if(machineVector[machineNr])
 		{
 			machineVector[machineNr] = false;

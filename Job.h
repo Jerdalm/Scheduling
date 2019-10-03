@@ -34,10 +34,10 @@ public:
 	std::vector<Task> getTaskVector() const;
 	void setTaskVector(const std::vector<Task> aVector);
 
-	unsigned long CalculateMostSlack(unsigned short timeDuration);
-	const unsigned long getMostSlack() const;
-	unsigned long CalculateLeastSlack();
-	const unsigned long getLeastSlack() const;
+	unsigned long CalculateSlack(unsigned short timeDuration);
+	const unsigned long getSlack() const;
+
+	unsigned short Priority();
 
 
 private:
@@ -50,7 +50,7 @@ private:
 	std::vector<Task> taskVector;
 
 	unsigned long mostSlack;
-	unsigned long leastSlack;
+	unsigned short priorityNumber;
 };
 
 #endif /* JOB_H_ */

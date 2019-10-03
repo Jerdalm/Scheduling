@@ -23,6 +23,8 @@ public:
 	unsigned short getTimeDuration() const;
 	void setTimeDuration(const unsigned short aTimeDuration);
 
+	unsigned short getMachineNumber();
+
 private:
 unsigned short machineNumber;
 unsigned short timeDuration;
