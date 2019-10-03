@@ -55,14 +55,14 @@ void Job::setEndTime(const unsigned long anEndTime){
 	endTime = anEndTime;
 }
 
-unsigned long Job::getTotalDuration() const {
+unsigned long Job::getSlack() const {
 
-	return totalDuration;
+	return slack;
 }
 
-void Job::setTotalDuration(const unsigned long aTotalDuration){
+void Job::setSlack(const unsigned long aSlack){
 
-	totalDuration = aTotalDuration;
+	slack = aSlack;
 }
 
 std::vector<Task> Job::getTaskVector() const{
