@@ -83,20 +83,20 @@ void JobShop::criticalPathCalculation(std::vector<Job> &aJobVector) {
 
 }
 
-
-void JobShop::jobAssigner()
-{
-	Job *machineTask = nullptr;
+void JobShop::jobAssigner() {
+	Job *AssignableJob = nullptr;
 	for (Job &j : priorityList) {
-	{
-		machineTask=&j;
-		machineNr = machineTask->getTaskMachineNumber(1);
+		{
+			AssignableJob = &j;
+			machineNr = AssignableJob->getTaskMachineNumber(1);
 
-		if (machineVector[machineNr]) {
-			machineVector[machineNr] = false;
+			if (machineVector[machineNr]) {
+				AssignableJob->nextFinishedTaskTime = currTime
+						+ AssignableJob->getTimeDuration(1);
+				machineVector[machineNr] = false;
+			}
 		}
 	}
-}
 }
 
 void JobShop::jobDeassigner() {
@@ -114,33 +114,30 @@ void JobShop::jobDeassigner() {
 		currTime = nextDeassign->getNextFinishedTaskTime();
 		nextDeassign->setNextFinishedTaskTime(0);
 		nextDeassign->setAssigned(false);
+		machineVector[machineNr] = true;
 		if (nextDeassign->getTaskVectorSize() == 1) {
 			nextDeassign->setEndTime(currTime);
 		}
 	}
 }
 
-//bool JobShop::checkJobsFinished(){
-//	for(int i = 0; i < jobVector.size(); ++i)
-//		{
-//		if(jobVector[i].getTaskVectorSize()){
-//		}
-//}
-//
-//void JobShop::SolveAlgorithm(){
-//
-//	while(checkJobsFinished()){
-//
-//	}
-//
-//}
+bool JobShop::checkJobsFinished() {
+	Job *currJobToCheck = nullptr;
+	for (Job j : jobVector) {
+		currJobToCheck = &j;
+		if (currJobToCheck->getTaskVectorSize() == 1) {
+			return false;
+		}
+	}
+	return true;
+}
 
-void JobShop::assigner()
-{
-	assign = true;
-	for(int i = 0; i < priorityList.size(); i++)
-	{
-	nextFinishedTaskTime = currTime + priorityList[i].getTimeDuration(1);
+void JobShop::solveAlgorithm() {
+
+	while (checkJobsFinished()) {
+		criticalPathCalculation();
+		jobAssigner();
+		jobDeassigner();
 	}
 }
 
