@@ -21,8 +21,12 @@
 #include <list>
 #include <set>
 
+
+
 class JobShop {
 public:
+
+
   JobShop();
   virtual ~JobShop();
 
@@ -35,6 +39,8 @@ public:
   void jobAssigner();
   void jobDeassigner();
   void generateOutput();
+
+  //static unsigned long currTime = 0;
 
 private:
 
@@ -55,7 +61,6 @@ private:
   unsigned short machineNumber;
   unsigned short JobNumber;
   unsigned short timeDuration;
-
   unsigned short machineNr;
 
 

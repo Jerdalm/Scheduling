@@ -35,22 +35,33 @@ public:
 	void setTaskVector(const std::vector<Task> aVector);
 
 	unsigned long CalculateSlack(unsigned short timeDuration);
-	const unsigned long getSlack() const;
+	unsigned long getSlack() const;
+
+	unsigned long getTaskVectorSize() const;
+
+	unsigned long getNextFinishedTaskTime() const;
+	void setNextFinishedTaskTime(const unsigned long aFinishedTaskTime);
+
+	bool getAssigned() const;
+	void setAssigned(const bool assignedState);
+
+	unsigned short getTaskMachineNumber(const unsigned short aTaskNo);
 
 	unsigned short Priority();
 
-
 private:
-	unsigned short jobID;
+
 	bool assigned;
-	unsigned short lastAssignedMachine;
+	unsigned short jobID;
 	unsigned long startingTime;
 	unsigned long endTime;
-	unsigned long totalDuration;
-	std::vector<Task> taskVector;
 
-	unsigned long mostSlack;
 	unsigned short priorityNumber;
+	unsigned short lastAssignedMachine;
+	unsigned long nextFinishedTaskTime;
+	unsigned long totalDuration;
+	unsigned long slack;
+	std::vector<Task> taskVector;
 };
 
 #endif /* JOB_H_ */
