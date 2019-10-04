@@ -64,8 +64,8 @@ public:
    *
    */
   void jobAssigner();
-  void jobDeassigner();
 
+  void jobDeassigner();
 
   //void JobShop::SolveAlgorithm();
   void assigner();
@@ -86,7 +86,7 @@ private:
   std::vector<Task> taskVector;
   std::vector<Job> jobVector;
 
-  std::vector<bool> machineVector;
+  std::vector<bool> machineVector = {false, false, false, false, false, false};
 
   unsigned short currjobID = 0;
   unsigned short jobAmount = 0;

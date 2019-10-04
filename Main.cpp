@@ -13,7 +13,7 @@ int main(int argc, char **argv) {
 	JobShop AlgorithmShop;
 	AlgorithmShop.extractFile(argv[1]);
 	AlgorithmShop.solveAlgorithm();
-	AlgorithmShop.generateOutput();
+AlgorithmShop.generateOutput();
 
 	return 0;
 }
