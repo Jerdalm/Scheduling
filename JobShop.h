@@ -39,11 +39,9 @@ public:
   void jobAssigner();
   void jobDeassigner();
   void generateOutput();
-<<<<<<< HEAD
+
   //void JobShop::SolveAlgorithm();
-=======
   void assigner();
->>>>>>> 0a57bc0e1b309e689051f85601c251c5a13c29c8
 
   static unsigned long currTime;
 
