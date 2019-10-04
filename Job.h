@@ -96,18 +96,31 @@ public:
 	 */
 	unsigned long getNextFinishedTaskTime() const;
 	/**
-	 *
+	 * Sets nextFinishedTaskTime
 	 * @param aFinishedTaskTime
 	 */
 	void setNextFinishedTaskTime(const unsigned long aFinishedTaskTime);
-
+	/**
+	 * Returns true or false for assigned
+	 * @return
+	 */
 	bool getAssigned() const;
+	/**
+	 * Sets assigned
+	 * @param assignedState
+	 */
 	void setAssigned(const bool assignedState);
-
+	/**
+	 * Returns taskMachineNumber
+	 * @param aTaskNo
+	 */
 	unsigned short getTaskMachineNumber(const unsigned short aTaskNo);
+	/**
+	 * Returns timeDuration
+	 * @param aTaskNo
+	 */
 	unsigned short getTimeDuration(const unsigned short aTaskNo);
 
-	unsigned short Priority();
 
 private:
 	unsigned short jobID;
