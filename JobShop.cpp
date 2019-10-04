@@ -81,7 +81,7 @@ void JobShop::criticalPathCalculation(std::vector<Job>& aJobVector)
 	    struct {
 	        bool operator()(Job A, Job B) const
 	        {
-	            return A.getSlack < B.getSlack;
+	            return A.getSlack() < B.getSlack();
 	        }
 	    } customLess;
 	    std::sort(priorityList.begin(), priorityList.end(), customLess);
@@ -89,17 +89,19 @@ void JobShop::criticalPathCalculation(std::vector<Job>& aJobVector)
 
 }
 
-//std::map JobShop::getCriticalPathCalculation()
-//{
-//	return priorityMap;
-//}
+////std::map JobShop::getCriticalPathCalculation()
+////{
+////	return priorityMap;
+////}
+//
 
 void JobShop::jobAssigner()
 {
 	for(int i = 0; i < priorityList.size(); i++)
 	{
+		machineNr = priorityList[i].getTaskMachineNumber(1);
 
-		machineNr = priorityList.begin();
+
 		if(machineVector[machineNr])
 		{
 			machineVector[machineNr] = false;
