@@ -89,12 +89,6 @@ void JobShop::criticalPathCalculation(std::vector<Job>& aJobVector)
 
 }
 
-////std::map JobShop::getCriticalPathCalculation()
-////{
-////	return priorityMap;
-////}
-//
-
 void JobShop::jobAssigner()
 {
 	for(int i = 0; i < priorityList.size(); i++)
