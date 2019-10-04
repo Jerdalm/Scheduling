@@ -124,3 +124,12 @@ void JobShop::jobDeassigner()
 	}
 	}
 
+void JobShop::assigner()
+{
+	assign = true;
+	for(int i = 0; i < priorityList.size(); i++)
+	{
+	nextFinishedTaskTime = currTime + priorityList[i].getTimeDuration(1);
+	}
+}
+

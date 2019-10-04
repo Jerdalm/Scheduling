@@ -39,13 +39,14 @@ public:
   void jobAssigner();
   void jobDeassigner();
   void generateOutput();
+  void assigner();
 
   //static unsigned long currTime = 0;
 
 private:
 
   std::ifstream batchFile;
-  std::list<Job> priorityList;
+  std::vector<Job> priorityList;
 
   std::string line;
   std::string inputParameters;
@@ -63,6 +64,7 @@ private:
   unsigned short timeDuration = 0;
   unsigned short machineNr = 0;
 
+  bool assign = false;
 
 };
 
