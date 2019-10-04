@@ -118,8 +118,3 @@ unsigned short Job::getTimeDuration(const unsigned short aTaskNo){
 
 	return taskVector[aTaskNo].getTimeDuration();
 }
-
-unsigned short Job::Priority()
-{
-	return priorityNumber = jobID;
-}
