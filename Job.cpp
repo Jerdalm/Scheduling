@@ -71,7 +71,7 @@ void Job::setTaskVector(const std::vector<Task> aVector){
 
 }
 
-unsigned long Job::CalculateSlack(unsigned short timeDuration)
+void Job::CalculateSlack(unsigned short timeDuration)
 {
 	for(int i = 0; i < taskVector.size(); i++)
 	{
