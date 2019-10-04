@@ -13,33 +13,92 @@
 
 class Job {
 public:
+	/**
+	 * Initialises a Job object
+	 */
 	Job();
+	/**
+	 * Copy-constructor for Job
+	 * @param aJob
+	 */
 	Job(const Job& aJob);
+	/**
+	 * Initialises a Job object with anID and a vector TaskVector
+	 * @param anID
+	 * @param aTaskVector
+	 */
 	Job(unsigned short anID, const std::vector<Task>& aTaskVector);
-
+	/**
+	 * Destructor for Job
+	 */
 	virtual ~Job();
-
+	/**
+	 * Returns jobID
+	 */
 	unsigned short getJobID() const;
+	/**
+	 * Sets jobID
+	 * @param anJobID
+	 */
 	void setJobID(const unsigned short anJobID);
-
+	/**
+	 * Returns startingTime
+	 */
 	unsigned long getStartingTime() const;
+	/**
+	 * Sets startingTime
+	 * @param aStartingTime
+	 */
 	void setStartingTime(const unsigned long aStartingTime);
-
+	/**
+	 * Returns endTime
+	 */
 	unsigned long getEndTime() const;
+	/**
+	 * sets endTime;
+	 * @param anEndTime
+	 */
 	void setEndTime(const unsigned long anEndTime);
-
+	/**
+	 * Returns totalDuration
+	 */
 	unsigned long getTotalDuration() const;
+	/**
+	 * Sets totalDuration
+	 * @param aTotalDuration
+	 */
 	void setTotalDuration(const unsigned long aTotalDuration);
-
+	/**
+	 * Returns vector<Task> taskVector
+	 * @return
+	 */
 	std::vector<Task> getTaskVector() const;
+	/**
+	 * Sets vector<Task> aVector
+	 * @param aVector
+	 */
 	void setTaskVector(const std::vector<Task> aVector);
-
+	/**
+	 * Calculates slack for jobs
+	 * @param timeDuration
+	 */
 	void CalculateSlack(unsigned short timeDuration);
+	/**
+	 * Returns slack
+	 */
 	unsigned long getSlack() const;
-
+	/**
+	 * Returns taskVectorSize
+	 */
 	unsigned long getTaskVectorSize() const;
-
+	/**
+	 * Returns nextFinishedTaskTime
+	 */
 	unsigned long getNextFinishedTaskTime() const;
+	/**
+	 *
+	 * @param aFinishedTaskTime
+	 */
 	void setNextFinishedTaskTime(const unsigned long aFinishedTaskTime);
 
 	bool getAssigned() const;
