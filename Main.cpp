@@ -12,10 +12,9 @@ int main(int argc, char **argv) {
 
 	JobShop AlgorithmShop;
 	AlgorithmShop.extractFile(argv[1]);
+	AlgorithmShop.SolveAlgorithm();
 	AlgorithmShop.generateOutput();
 
 	return 0;
 }
-
-
 
