@@ -56,12 +56,12 @@ private:
   std::vector<bool> machineVector;
 
   unsigned short currjobID = 0;
-  unsigned short jobAmount;
-  unsigned short machineAmount;
-  unsigned short machineNumber;
-  unsigned short JobNumber;
-  unsigned short timeDuration;
-  unsigned short machineNr;
+  unsigned short jobAmount = 0;
+  unsigned short machineAmount = 0;
+  unsigned short machineNumber = 0;
+  unsigned short JobNumber = 0;
+  unsigned short timeDuration = 0;
+  unsigned short machineNr = 0;
 
 
 };

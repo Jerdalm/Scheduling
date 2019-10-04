@@ -9,19 +9,20 @@
 
 Job::Job() :
 jobID(0), assigned(false), lastAssignedMachine(0), startingTime(0), endTime(0),
-totalDuration(0), priorityNumber(0)
+totalDuration(0), priorityNumber(0), nextFinishedTaskTime(0), slack(0)
 {
 }
 
 Job::Job(const Job& aJob) :
 jobID(aJob.jobID), assigned(aJob.assigned), lastAssignedMachine(aJob.lastAssignedMachine),
-startingTime(aJob.startingTime), endTime(aJob.endTime), totalDuration(aJob.totalDuration), taskVector(aJob.taskVector), priorityNumber(aJob.priorityNumber)
+startingTime(aJob.startingTime), endTime(aJob.endTime), totalDuration(aJob.totalDuration), taskVector(aJob.taskVector),
+priorityNumber(aJob.priorityNumber), nextFinishedTaskTime(aJob.nextFinishedTaskTime), slack(aJob.slack)
 {
 }
 
 Job::Job(unsigned short anID, const std::vector<Task>& aTaskVector) :
 jobID(anID), assigned(false), lastAssignedMachine(0), startingTime(0), endTime(0),
-totalDuration(0), taskVector(aTaskVector), priorityNumber(anID)
+totalDuration(0), taskVector(aTaskVector), priorityNumber(anID), nextFinishedTaskTime(0), slack(0)
 {
 }
 
@@ -32,6 +33,7 @@ Job::~Job()
 unsigned short Job::getJobID() const{
 
 	return jobID;
+
 }
 void Job::setJobID(const unsigned short anJobID){
 
@@ -62,6 +64,7 @@ std::vector<Task> Job::getTaskVector() const{
 
 	return taskVector;
 }
+
 void Job::setTaskVector(const std::vector<Task> aVector){
 
 	taskVector = aVector;
