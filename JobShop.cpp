@@ -109,6 +109,16 @@ void JobShop::jobAssigner()
 
 void JobShop::jobDeassigner()
 {
+	unsigned short nextDeassign;
+	for(int i = 0; i < jobVector.size(); ++i)
+	{
+	if(jobVector[i].getNextFinishedTaskTime() < nextDeassign && jobVector[i].getAssigned() == true){
+	nextDeassign = i;
+	}
+	currTime = jobVector[i].getNextFinishedTaskTime();
+	jobVector[nextDeassign].setNextFinishedTaskTime(0);
+	if(jobVector[nextDeassign].getTaskVectorSize() == 1){
 
+	}
 }
 
