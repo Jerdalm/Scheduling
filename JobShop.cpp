@@ -83,29 +83,20 @@ void JobShop::criticalPathCalculation(std::vector<Job> &aJobVector) {
 
 }
 
-<<<<<<< HEAD
-////std::map JobShop::getCriticalPathCalculation()
-////{
-////	return priorityMap;
-////}
-//
 
-void JobShop::jobAssigner() {
-	for (Job i : priorityList) {
-		//machineNr = priorityList[i].getTaskMachineNumber(1);
-=======
 void JobShop::jobAssigner()
 {
-	for(int i = 0; i < priorityList.size(); i++)
+	Job *machineTask = nullptr;
+	for (Job &j : priorityList) {
 	{
-		machineNr = priorityList[i].getTaskMachineNumber(1);
-
->>>>>>> 0a57bc0e1b309e689051f85601c251c5a13c29c8
+		machineTask=&j;
+		machineNr = machineTask->getTaskMachineNumber(1);
 
 		if (machineVector[machineNr]) {
 			machineVector[machineNr] = false;
 		}
 	}
+}
 }
 
 void JobShop::jobDeassigner() {
