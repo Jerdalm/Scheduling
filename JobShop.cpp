@@ -66,49 +66,59 @@ void JobShop::generateOutput(){
   }
 }
 
-void JobShop::criticalPathCalculation(std::vector<Job>& aJobVector)
-{
-
-	for(int i = 0; i < jobVector.size(); i++)
-	{
-		if(!jobVector[i].getAssigned())
-		{		{
-		priorityList.push_back(jobVector[i]);
-		}
-	}
-
-	    // sort using a custom function object
-	    struct {
-	        bool operator()(Job A, Job B) const
-	        {
-	            return A.getSlack < B.getSlack;
-	        }
-	    } customLess;
-	    std::sort(priorityList.begin(), priorityList.end(), customLess);
-	}
-
-}
-
-//std::map JobShop::getCriticalPathCalculation()
+//void JobShop::criticalPathCalculation(std::vector<Job>& aJobVector)
 //{
-//	return priorityMap;
+//
+//	for(int i = 0; i < jobVector.size(); i++)
+//	{
+//		if(!jobVector[i].getAssigned())
+//		{		{
+//		priorityList.push_back(jobVector[i]);
+//		}
+//	}
+//
+//	    // sort using a custom function object
+//	    struct {
+//	        bool operator()(Job A, Job B) const
+//	        {
+//	            return A.getSlack < B.getSlack;
+//	        }
+//	    } customLess;
+//	    std::sort(priorityList.begin(), priorityList.end(), customLess);
+//	}
+//
 //}
-
-void JobShop::jobAssigner()
-{
-	for(int i = 0; i < priorityMap.size(); i++)
-	{
-
-		machineNr = priorityMap.begin();
-		if(machineVector[machineNr])
-		{
-			machineVector[machineNr] = false;
-		}
-	}
-}
+//
+////std::map JobShop::getCriticalPathCalculation()
+////{
+////	return priorityMap;
+////}
+//
+//void JobShop::jobAssigner()
+//{
+//	for(int i = 0; i < priorityList.size(); i++)
+//	{
+//
+//		machineNr = priorityList.begin();
+//		if(machineVector[machineNr])
+//		{
+//			machineVector[machineNr] = false;
+//		}
+//	}
+//}
 
 void JobShop::jobDeassigner()
 {
-
-}
+	unsigned short nextDeassign;
+	for(int i = 0; i < jobVector.size(); ++i)
+	{
+	if(jobVector[i].getNextFinishedTaskTime() < nextDeassign && jobVector[i].getAssigned() == true){
+	nextDeassign = i;
+	}
+	}
+	//currTime = jobVector[nextDeassign].getNextFinishedTaskTime();
+	jobVector[nextDeassign].setNextFinishedTaskTime(0);
+	if(jobVector[nextDeassign].getTaskVectorSize() == 1){
+	}
+	}
 

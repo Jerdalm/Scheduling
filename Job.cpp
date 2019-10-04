@@ -8,17 +8,20 @@
 #include "Job.h"
 
 Job::Job() :
-jobID(0), assigned(false), lastAssignedMachine(0), startingTime(0), endTime(0), totalDuration(0), priorityNumber(0)
+jobID(0), assigned(false), lastAssignedMachine(0), startingTime(0), endTime(0),
+totalDuration(0), priorityNumber(0)
 {
 }
 
 Job::Job(const Job& aJob) :
-jobID(aJob.jobID), assigned(aJob.assigned), lastAssignedMachine(aJob.lastAssignedMachine), startingTime(aJob.startingTime), endTime(aJob.endTime), totalDuration(aJob.totalDuration), taskVector(aJob.taskVector), priorityNumber(aJob.priorityNumber)
+jobID(aJob.jobID), assigned(aJob.assigned), lastAssignedMachine(aJob.lastAssignedMachine),
+startingTime(aJob.startingTime), endTime(aJob.endTime), totalDuration(aJob.totalDuration), taskVector(aJob.taskVector), priorityNumber(aJob.priorityNumber)
 {
 }
 
 Job::Job(unsigned short anID, const std::vector<Task>& aTaskVector) :
-jobID(anID), assigned(false), lastAssignedMachine(0), startingTime(0), endTime(0), totalDuration(0), taskVector(aTaskVector), priorityNumber(anID)
+jobID(anID), assigned(false), lastAssignedMachine(0), startingTime(0), endTime(0),
+totalDuration(0), taskVector(aTaskVector), priorityNumber(anID)
 {
 }
 
@@ -55,16 +58,6 @@ void Job::setEndTime(const unsigned long anEndTime){
 	endTime = anEndTime;
 }
 
-unsigned long Job::getSlack() const {
-
-	return slack;
-}
-
-void Job::setSlack(const unsigned long aSlack){
-
-	slack = aSlack;
-}
-
 std::vector<Task> Job::getTaskVector() const{
 
 	return taskVector;
@@ -79,13 +72,43 @@ unsigned long Job::CalculateSlack(unsigned short timeDuration)
 {
 	for(int i = 0; i < taskVector.size(); i++)
 	{
-		mostSlack += taskVector[i].getTimeDuration();
+		slack += taskVector[i].getTimeDuration();
 	}
 }
 
-const unsigned long Job::getSlack() const
+unsigned long Job::getSlack() const
 {
-	return mostSlack;
+	return slack;
+}
+
+unsigned long Job::getTaskVectorSize() const{
+
+	return taskVector.size();
+}
+
+unsigned long Job::getNextFinishedTaskTime() const{
+
+	return nextFinishedTaskTime;
+}
+
+void Job::setNextFinishedTaskTime(const unsigned long aFinishedTaskTime){
+
+	nextFinishedTaskTime = aFinishedTaskTime;
+}
+
+bool Job::getAssigned() const{
+
+	return (assigned);
+
+}
+void Job::setAssigned(const bool assignedState){
+
+	assigned = assignedState;
+}
+
+unsigned short Job::getTaskMachineNumber(const unsigned short aTaskNo){
+
+	return taskVector[aTaskNo].getMachineNumber();
 }
 
 unsigned short Job::Priority()
