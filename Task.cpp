@@ -38,11 +38,6 @@ void Task::setMachineNumber(const unsigned short aMachineNumber){
 
 }
 
-unsigned short Task::getMachineNumber()
-{
-	return machineNumber;
-}
-
 void Task::setTimeDuration(const unsigned short aTimeDuration){
 
 	timeDuration = aTimeDuration;

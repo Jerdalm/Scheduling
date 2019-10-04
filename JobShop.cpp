@@ -91,8 +91,8 @@ void JobShop::jobAssigner() {
 			machineNr = AssignableJob->getTaskMachineNumber(1);
 
 			if (machineVector[machineNr]) {
-				AssignableJob->nextFinishedTaskTime = currTime
-						+ AssignableJob->getTimeDuration(1);
+				AssignableJob->setNextFinishedTaskTime(currTime
+						+ AssignableJob->getTimeDuration(1));
 				machineVector[machineNr] = false;
 			}
 		}
@@ -135,7 +135,7 @@ bool JobShop::checkJobsFinished() {
 void JobShop::solveAlgorithm() {
 
 	while (checkJobsFinished()) {
-		criticalPathCalculation();
+		criticalPathCalculation(jobVector);
 		jobAssigner();
 		jobDeassigner();
 	}
