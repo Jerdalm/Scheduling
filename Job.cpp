@@ -118,3 +118,7 @@ unsigned short Job::getTimeDuration(const unsigned short aTaskNo){
 
 	return taskVector[aTaskNo].getTimeDuration();
 }
+
+void Job::deleteSolvedTask(){
+	taskVector.erase(taskVector.begin());
+}

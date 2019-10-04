@@ -55,22 +55,31 @@ public:
    */
   void generateOutput();
   /**
-   * Calculates the critical path with the getSlack from every job
+   * Checks if machine for the task free is.
+   * Calculates the critical path with the getSlack from every job with an free machine
    * The job with te most slack will be at the first position
    * @param aJobVector
    */
   void criticalPathCalculation(std::vector<Job>& aJobVector);
   /**
-   *
+   * Assigns a job to an machine and sets that machine to unavailable
    */
   void jobAssigner();
-
+   /* Sets task time to zero
+   *
+   */
   void jobDeassigner();
-
-  //void JobShop::SolveAlgorithm();
-  void assigner();
-
+  /**
+   * Checks if job is finished and sets machine to available
+   * Sets that machine to available
+   * Sets assignment to false
+   * Sets endTime to currTime
+   * @return
+   */
   bool checkJobsFinished();
+  /**
+   * an loop for the three big algorithmes
+   */
   void solveAlgorithm();
 
   static unsigned long currTime;

@@ -84,25 +84,30 @@ void JobShop::criticalPathCalculation(std::vector<Job> &aJobVector) {
 }
 
 void JobShop::jobAssigner() {
-	//std::cout << "reeeeee2" << std::endl;
+	std::cout << "assignerstart" << std::endl;
 	Job *AssignableJob = nullptr;
 	for (Job &j : priorityList) {
 		{
+			std::cout << "assignerloop" << std::endl;
 			AssignableJob = &j;
-			machineNr = AssignableJob->getTaskMachineNumber(1);
-
+			if (AssignableJob->getTaskVectorSize() >= 1) {
+				machineNr = AssignableJob->getTaskMachineNumber(1);
+				std::cout << "nnumber "+machineNr << std::endl;
+			}
 			if (machineVector[machineNr]) {
+				std::cout << "machineVector[machineNr]" << std::endl;
 				AssignableJob->setNextFinishedTaskTime(
 						currTime + AssignableJob->getTimeDuration(1));
+				std::cout << "currtime"+currTime + AssignableJob->getTimeDuration(1)
+						<< std::endl;
 				machineVector[machineNr] = false;
 			}
 		}
 	}
 }
 
-void JobShop::jobDeassigner() {
-	//std::cout << "reeeeee3" << std::endl;
-	unsigned long nextDeassign = JobNumber;
+//std::cout << "reeeeee3" << std::endl;
+
 //	Job *nextDeassign = nullptr;
 //	for(Job &aj : jobVector){
 //		if( aj.getAssigned()){
@@ -111,25 +116,37 @@ void JobShop::jobDeassigner() {
 //		}
 //	void JobShop::jobDeassigner()
 //	{
-	//unsigned short nextDeassign;
+//unsigned short nextDeassign;
+
+void JobShop::jobDeassigner() {
+	std::cout << "deassignStart" << std::endl;
+	unsigned long nextDeassign = JobNumber;
 	for (int i = 0; i < jobVector.size(); ++i) {
+		std::cout << "loopJVecDEASSIGN" << std::endl;
 		if (jobVector[i].getNextFinishedTaskTime() < nextDeassign
 				&& jobVector[i].getAssigned() == true) {
 			nextDeassign = i;
 		}
 	}
-	//std::cout<< "reeeeTIETENeeeeeeeeeee"<<std::endl;
+	std::cout << "setCURRtime" << std::endl;
 	currTime = jobVector[nextDeassign].getNextFinishedTaskTime();
-	//std::cout<< "reeeeTIETENe"<<std::endl;
+	std::cout << "setNEXTtaskTIME" << std::endl;
 	jobVector[nextDeassign].setNextFinishedTaskTime(0);
-	//std::cout<< "reeeeTIETENe"<<std::endl;
+	std::cout << "setASSIGNED" << std::endl;
 	jobVector[nextDeassign].setAssigned(false);
-	jobVector[nextDeassign].
-	//std::cout<< "reeeeTIETEN"<<std::endl;
-	if (jobVector[nextDeassign].getTaskVectorSize() == 1) {
-		jobVector[nextDeassign].setEndTime(currTime);
-		//std::cout<< "reeeeTIETENNNNNNNNNNN"<<std::endl;
+	std::cout << "machineVector[machineNr]==true" << std::endl;
+	machineVector[machineNr] = true;
+	std::cout << "deletesolvedtaskbegin" << std::endl;
+	if(jobVector[nextDeassign].getTaskVectorSize() != 0){
+	jobVector[nextDeassign].deleteSolvedTask();
+	std::cout << "deletesolvedtask" << std::endl;
 	}
+	if (jobVector[nextDeassign].getTaskVectorSize() == 0) {
+		std::cout << "SETendTIME" << std::endl;
+		jobVector[nextDeassign].setEndTime(currTime);
+		std::cout << currTime << std::endl;
+	}
+
 }
 
 //for (int i; i<jobVector.size(); ++i){
@@ -152,25 +169,32 @@ void JobShop::jobDeassigner() {
 //		}
 //	}
 
+
 bool JobShop::checkJobsFinished() {
-	//std::cout << "reeeeee5" << std::endl;
 	Job *currJobToCheck = nullptr;
 	for (Job j : jobVector) {
+		std::cout << "loopjobVector" << std::endl;
 		currJobToCheck = &j;
 		if (currJobToCheck->getTaskVectorSize() >= 1) {
+			std::cout << "algorithmeloop" << std::endl;
+
 			return true;
 		}
 	}
+	std::cout << "breakoutofalgorihtm" << std::endl;
 	return false;
 }
 
 void JobShop::solveAlgorithm() {
 
 	while (checkJobsFinished()) {
-		//std::cout << "reeeeee" << std::endl;
+
 		criticalPathCalculation(jobVector);
+		std::cout << "critpath" << std::endl;
 		jobAssigner();
+		std::cout << "assign" << std::endl;
 		jobDeassigner();
+		std::cout << "DEassign" << std::endl;
 	}
 }
 

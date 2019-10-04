@@ -123,6 +123,8 @@ public:
 	 */
 	unsigned short getTimeDuration(const unsigned short aTaskNo);
 
+	void deleteSolvedTask();
+
 
 private:
 	unsigned short jobID;
