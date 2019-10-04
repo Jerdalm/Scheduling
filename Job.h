@@ -23,7 +23,8 @@ public:
 	 */
 	Job(const Job& aJob);
 	/**
-	 * Initialises a Job object with anID and a vector TaskVector
+	 * Initialises a Job object with anID and a vector TaskVector.
+	 * Within this vector are all the tasks with their duration and machine number.
 	 * @param anID
 	 * @param aTaskVector
 	 */
@@ -84,6 +85,7 @@ public:
 	 */
 	void CalculateSlack(unsigned short timeDuration);
 	/**
+	 * Calculates slack
 	 * Returns slack
 	 */
 	unsigned long getSlack() const;

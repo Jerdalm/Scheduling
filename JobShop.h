@@ -26,22 +26,52 @@
 class JobShop {
 public:
 
-
+	/**
+	 * Initialises a jobShop
+	 */
   JobShop();
+  /**
+   * Deconstructor for Jobshop
+   */
   virtual ~JobShop();
-
+  /**
+   * Returns a Job vector jobVector
+   * @return
+   */
   std::vector<Job> getJobVector();
+  /**
+   * Sets jobVector
+   * @param aVector
+   */
   void setJobVector(const std::vector<Job>& aVector);
-
+  /**
+   * Extracts the job count, machine count and the tasks(machine number and duration)
+   * from the .txt file.
+   * @param argv
+   */
   void extractFile(const std::string& argv);
+  /**
+   * Generates the output for the terminal
+   */
+  void generateOutput();
+  /**
+   * Calculates the critical path with the getSlack from every job
+   * The job with te most slack will be at the first position
+   * @param aJobVector
+   */
   void criticalPathCalculation(std::vector<Job>& aJobVector);
-    //std::map getCriticalPathCalculation();
+  /**
+   *
+   */
   void jobAssigner();
   void jobDeassigner();
-  void generateOutput();
+
 
   //void JobShop::SolveAlgorithm();
   void assigner();
+
+  bool checkJobsFinished();
+  void solveAlgorithm();
 
   static unsigned long currTime;
 
