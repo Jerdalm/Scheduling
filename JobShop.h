@@ -39,14 +39,18 @@ public:
   void jobAssigner();
   void jobDeassigner();
   void generateOutput();
+<<<<<<< HEAD
   //void JobShop::SolveAlgorithm();
+=======
+  void assigner();
+>>>>>>> 0a57bc0e1b309e689051f85601c251c5a13c29c8
 
   static unsigned long currTime;
 
 private:
 
   std::ifstream batchFile;
-  std::list<Job> priorityList;
+  std::vector<Job> priorityList;
 
   std::string line;
   std::string inputParameters;
@@ -64,6 +68,7 @@ private:
   unsigned short timeDuration = 0;
   unsigned short machineNr = 0;
 
+  bool assign = false;
 
 };
 

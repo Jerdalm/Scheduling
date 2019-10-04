@@ -46,6 +46,7 @@ public:
 	void setAssigned(const bool assignedState);
 
 	unsigned short getTaskMachineNumber(const unsigned short aTaskNo);
+	unsigned short getTimeDuration(const unsigned short aTaskNo);
 
 	unsigned short Priority();
 
